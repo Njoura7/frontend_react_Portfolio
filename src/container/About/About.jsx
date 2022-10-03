@@ -1,34 +1,44 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-import { images } from '../../constants'
+import { AppWrap } from '../../wrapper'
 
 import './About.scss'
 
-const abouts = [
-    {
-        title: 'Front-end Development',
-        description: 'I am a creative web developer.',
-        imgUrl: images.about01,
-    },
-    {
-        title: 'Back-end Development',
-        description: 'I am a creative web developer.',
-        imgUrl: images.about02,
-    },
-    {
-        title: 'Mobile Development',
-        description: 'I am a creative web developer.',
-        imgUrl: images.about03,
-    },
-    {
-        title: 'Web Animations',
-        description: 'I am a creative web developer.',
-        imgUrl: images.about04,
-    },
-]
+import { urlFor, client } from '../../client'
+
+// const abouts = [
+//     {
+//         title: 'Front-end Development',
+//         description: 'I am a creative web developer.',
+//         imgUrl: images.about01,
+//     },
+//     {
+//         title: 'Back-end Development',
+//         description: 'I am a creative web developer.',
+//         imgUrl: images.about02,
+//     },
+//     {
+//         title: 'Mobile Development',
+//         description: 'I am a creative web developer.',
+//         imgUrl: images.about03,
+//     },
+//     {
+//         title: 'Web Animations',
+//         description: 'I am a creative web developer.',
+//         imgUrl: images.about04,
+//     },
+// ]
 
 const About = () => {
+    const [abouts, setAbouts] = useState([])
+
+    useEffect(() => {
+        const query = '*[_type=="abouts"]'
+
+        client.fetch(query).then((data) => setAbouts(data))
+    }, [])
+
     return (
         <>
             <h2 className="head-text">
@@ -46,7 +56,7 @@ const About = () => {
                         key={about.title + index}
                     >
                         <img
-                            src={about.imgUrl}
+                            src={urlFor(about.imgUrl)}
                             alt={about.title}
                         />
                         <h2
@@ -68,4 +78,4 @@ const About = () => {
     )
 }
 
-export default About
+export default AppWrap(About, 'about')
