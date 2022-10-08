@@ -10,6 +10,7 @@ import graphql from '../assets/graphql.png'
 import html from '../assets/html.png'
 import javascript from '../assets/javascript.png'
 import mu5 from '../assets/mu5.png'
+import tailwindcss from '../assets/tailwindcss.png'
 import node from '../assets/node.png'
 import python from '../assets/python.png'
 import react from '../assets/react.png'
@@ -48,6 +49,7 @@ export default {
     graphql,
     html,
     javascript,
+    tailwindcss,
     mu5,
     node,
     python,
