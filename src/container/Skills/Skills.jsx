@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import ReactTooltip from 'react-tooltip'
 
-import { AppWrap } from '../../wrapper'
+import { AppWrap, MotionWrap } from '../../wrapper'
 
 import { urlFor, client } from '../../client'
 
@@ -33,8 +33,11 @@ const Skills = () => {
                 <motion.dev className="app__skills-list">
                     {skills?.map((skill) => (
                         <motion.div
-                            whileInView={{ opacity: [0, 1] }}
-                            transition={{ duration: 0.5 }}
+                            whileInView={{ opacity: [0, 1], duration: 0.2 }}
+                            whileHover={{
+                                scale: 1.15,
+                                transition: { duration: 0.25 },
+                            }}
                             className="app__skills-item app__flex"
                             key={skill.name}
                         >
@@ -95,4 +98,4 @@ const Skills = () => {
     )
 }
 
-export default AppWrap(Skills, 'skills')
+export default AppWrap(MotionWrap(Skills, 'app__skills'), 'skills', 'app__whitebg')

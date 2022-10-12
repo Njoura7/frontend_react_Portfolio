@@ -1,34 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-import { AppWrap } from '../../wrapper'
+import { AppWrap, MotionWrap } from '../../wrapper'
 
 import './About.scss'
 
 import { urlFor, client } from '../../client'
-
-// const abouts = [
-//     {
-//         title: 'Front-end Development',
-//         description: 'I am a creative web developer.',
-//         imgUrl: images.about01,
-//     },
-//     {
-//         title: 'Back-end Development',
-//         description: 'I am a creative web developer.',
-//         imgUrl: images.about02,
-//     },
-//     {
-//         title: 'Mobile Development',
-//         description: 'I am a creative web developer.',
-//         imgUrl: images.about03,
-//     },
-//     {
-//         title: 'Web Animations',
-//         description: 'I am a creative web developer.',
-//         imgUrl: images.about04,
-//     },
-// ]
 
 const About = () => {
     const [abouts, setAbouts] = useState([])
@@ -78,4 +55,4 @@ const About = () => {
     )
 }
 
-export default AppWrap(About, 'about')
+export default AppWrap(MotionWrap(About, 'app__about'), 'about', 'app__whitebg')
